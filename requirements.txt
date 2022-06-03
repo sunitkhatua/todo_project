@@ -1,0 +1,5 @@
+1) Python to write the working function.
+2) Django for the creation of background operations.
+3) HTML for the creation of the skeleton of the website.
+4) Bootstrap sample code to create a navigator and beautified the website.
+5) A compiler(ie. VS code, pycharm, etc)

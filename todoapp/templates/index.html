@@ -1,0 +1,81 @@
+  {% extends 'base.html' %}
+  {% block content %}
+    <div>
+      <div class="container pt-4">
+        <div class="row p-0 mt-4">
+          <div class="col-lg-4 mx-auto shadow p-0 ">
+            <div class="alert alert-info">
+              <h2>Add New TODO</h2>
+            </div>
+            <div class="p-4">
+              <form action="/add-todo/" method = "POST" >
+                {% csrf_token %}
+                {{form.as_p}}
+                <hr>
+                <div class="col-lg-4 mx-auto p-0">
+                  <input type="submit" value="ADD" class="btn btn-info">
+                </div>
+              </form>
+            </div>
+          </div>
+        
+
+          
+
+          <div class="col">
+          <div class="border">
+            
+            {% if todos|length == 0 %}
+
+            <div class="p-4">
+              <br>
+              <br>
+              <div class="alert alert-info text-center">
+                <p class="display-4" style="font-size: 30px;">No TODOS</p>
+              </div>
+              <br>
+              <br>
+            </div>
+
+            {% else %}
+            <div>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th> Title </th>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th>Tag</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  
+                  {% for todo in todos %}
+                  <tr>
+                    <td> {{forloop.counter}} </td>
+                    <td>{{todo.Title}}</td>
+                    <td>{{todo.Description}}</td>
+                    <td>{{todo.Date}}</td>
+                    <td>{{todo.Tag}}</td>
+                    <td>{{todo.Status}}</td>
+                    <td><a href="/delete-todo/{{todo.id}}" class="btn" title="Delete"> 🗑️ </a></td>
+                  </tr>
+                  {% endfor %}
+                
+                </tbody>
+              </table>
+            </div>
+            {% endif %}
+
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endblock %}
+  
+    
+    
